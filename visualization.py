@@ -18,7 +18,16 @@ import random
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib.cm as mpcm
+from datasets import pascalvoc_common 
 
+
+# =========================================================================== #
+# Process label number to class
+# =========================================================================== #
+def num2class(num):
+    for name,tup in pascalvoc_common.VOC_LABELS.items():
+        if num in tup:
+            return name
 
 # =========================================================================== #
 # Some colormaps.
@@ -75,6 +84,7 @@ def bboxes_draw_on_img(img, classes, scores, bboxes, colors, thickness=2):
         p2 = (int(bbox[2] * shape[0]), int(bbox[3] * shape[1]))
         cv2.rectangle(img, p1[::-1], p2[::-1], color, thickness)
         # Draw text...
+        # s = '%s/%.3f' % (num2class(classes[i]), scores[i])
         s = '%s/%.3f' % (classes[i], scores[i])
         p1 = (p1[0]-5, p1[1])
         cv2.putText(img, s, p1[::-1], cv2.FONT_HERSHEY_DUPLEX, 0.4, color, 1)
@@ -107,6 +117,7 @@ def plt_bboxes(img, classes, scores, bboxes, figsize=(10,10), linewidth=1.5):
                                  linewidth=linewidth)
             plt.gca().add_patch(rect)
             class_name = str(cls_id)
+            # class_name = num2class(cls_id)
             plt.gca().text(xmin, ymin - 2,
                            '{:s} | {:.3f}'.format(class_name, score),
                            bbox=dict(facecolor=colors[cls_id], alpha=0.5),

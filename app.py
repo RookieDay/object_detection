@@ -26,6 +26,7 @@ import cv2
 from nets import ssd_vgg_300, ssd_common, np_methods
 from preprocessing import ssd_vgg_preprocessing
 import visualization
+from datasets import pascalvoc_common 
 slim = tf.contrib.slim
 
 
@@ -149,12 +150,7 @@ def embed_image_html(fileps):
 
 def init_model(ckpt_path):
 
-    l_VOC_CLASS = [
-        'aeroplane',   'bicycle', 'bird',  'boat',      'bottle',
-        'bus',         'car',     'cat',   'chair',     'cow',
-        'diningTable', 'dog',     'horse', 'motorbike', 'person',
-        'pottedPlant', 'sheep',   'sofa',  'train',     'TV'
-       ]
+    l_VOC_CLASS = [name for name, tup in pascalvoc_common.VOC_LABELS.items()]
 
     # TensorFlow session: grow memory when needed. TF, DO NOT USE ALL MY GPU MEMORY!!!
     gpu_options = tf.GPUOptions(allow_growth=True)
@@ -218,7 +214,7 @@ class ImagenetClassifier(object):
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             endtime = time.time()
 
-            bet_result = [(str(idx+1)+' : '+ self.l_VOC_CLASS[v-1], '%.5f' % rscores[idx]) for idx, v in enumerate(rclasses)]
+            bet_result = [(str(idx+1)+' : '+ self.l_VOC_CLASS[v], '%.5f' % rscores[idx]) for idx, v in enumerate(rclasses)]
 
 
             # save image after draw box
