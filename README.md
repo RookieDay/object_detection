@@ -24,7 +24,7 @@ ubuntu16 + python3 + tensorflow1.3 + flask
 如上图,显示了图片中所属类别、概率、耗时以及所框选识别检测范围
 ## 视频效果预览
 
-![视频检测识别演示](https://github.com/RookieDay/object_detection/preview.gif)
+![视频检测识别演示](https://github.com/RookieDay/object_detection/blob/master/prev_video.gif)
 
 [视频下载演示](https://github.com/RookieDay/object_detection/blob/master/notebooks/mua.mp4)
 
