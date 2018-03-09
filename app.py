@@ -264,7 +264,7 @@ def start_from_terminal(app):
     # ImagenetClassifier.default_args.update({'gpu_mode': opts.gpu})
 
     # Initialize classifier + warm start by forward for allocation
-    ckpt_path = '/home/gl/objdet_web/checkpoints/ssd_300_vgg.ckpt'
+    ckpt_path = os.getcwd() + '/checkpoints/ssd_300_vgg.ckpt'
     init_stateModel = init_model(ckpt_path)
     app.clf = ImagenetClassifier(**init_stateModel)
 
