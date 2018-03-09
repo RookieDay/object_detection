@@ -130,7 +130,6 @@ def classify_upload():
             result=(False, 'Cannot open uploaded image.')
         )
     
-    sys.stdout.write( str(imagefile.filename) + '1111111111111111111111111' +'\n')
     results,new_img_base64 = app.clf.classify_image(filename)
 
     return render_template(
@@ -221,11 +220,6 @@ class ImagenetClassifier(object):
             fileout = str(datetime.datetime.now()).replace(' ', '_') + 'processed_img' + '.jpg' 
             fileps = os.path.join(DETECTED_FOLDER, fileout)
             cv2.imwrite(fileps,img)
-            sys.stdout.write( '-------------------------'+'\n')
-
-            sys.stdout.write( 'dddddddddddddd'+'\n')
-            sys.stdout.write( fileps + '\n')
-            sys.stdout.write( 'dddddddddddddd'+'\n')
 
             new_img_base64 = embed_image_html(fileps)
 
