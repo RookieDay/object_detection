@@ -5,7 +5,7 @@
 
 ## 简要说明
 
-本案例主要使用ssd-tensorflow训练后模型,搭建flask网站进行上传图片检测,其中参照了caffe中的[web_demo](https://github.com/BVLC/caffe/tree/master/examples/web_demo)来进行改进完善.
+本案例主要使用ssd-tensorflow训练后模型,搭建flask网站进行上传图片检测,其中[caffe中的 web_demo](https://github.com/BVLC/caffe/tree/master/examples/web_demo)给予较多指导.
 
 ### 环境配置  
 ubuntu16 + python3 + tensorflow1.3 + flask
@@ -14,7 +14,9 @@ ubuntu16 + python3 + tensorflow1.3 + flask
 
 - git clone https://github.com/RookieDay/object_detection.git 
 - 下载对应依赖包
+- 解压checkpoints目录下压缩包后，务必将ssd_300_vgg.ckpt/目录下文件全部挪到checkpoints/目录下面
 - python app.py - d (debug模式)
+- 浏览器输入 http://0.0.0.0:5000/ 即可
 
 ## 网站效果预览
 
